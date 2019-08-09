@@ -23,7 +23,9 @@ module.exports = {
 
         const userExists = await Dev.findOne({ user: username });
         
-        if(userExists) resp.json(userExists);
+        if(userExists) {
+           return resp.json(userExists);
+        }
 
         const response = await axios.get(`htpps://api.github.com/users/${username}`);
 
@@ -38,4 +40,4 @@ module.exports = {
 
         return resp.json(dev);
     }
-};
+}
